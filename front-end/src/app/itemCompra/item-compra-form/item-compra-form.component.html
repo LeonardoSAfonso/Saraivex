@@ -1,0 +1,51 @@
+<h1>{{title}}</h1>
+
+<form class="std-form" #f="ngForm" (ngSubmit)="salvar(f)">
+
+    <mat-form-field>
+       <mat-select placeholder="Selecione a compra" required [(ngModel)]="itemCompra.compra" name="compra" [disabled]="compraDisabled">
+          <mat-option *ngFor="let compra of compras" [value]="compra._id">
+             Compra nº {{compra.num_compra}} - Cliente: {{compra.livreiro?.cpf | mask: "000.000.000-00"}} -
+                Data: {{ compra.data_compra | date:'dd/MM/yyyy'}} 
+          </mat-option>
+       </mat-select>
+    </mat-form-field>
+ 
+    <mat-form-field>
+       <mat-select placeholder="Selecione o livro" required [(ngModel)]="itemCompra.produto" name="produto">
+          <mat-option *ngFor="let produto of livros" [value]="produto._id">
+             {{produto.titulo}} 
+             ({{produto.preco_compra | currency:'BRL':'symbol':'1.2-2':'pt-BR'}})
+          </mat-option>
+       </mat-select>
+    </mat-form-field>
+ 
+    <mat-form-field>
+       <mat-label>Quantidade</mat-label>
+       <input type="number" name="quantidade" matInput [(ngModel)]="itemCompra.quantidade" required step="1">
+    </mat-form-field>
+ 
+    <mat-form-field>
+       <mat-label>Desconto</mat-label>
+       <span matPrefix>R$</span>
+       <input type="number" name="desconto" matInput [(ngModel)]="itemCompra.desconto" required>
+    </mat-form-field>
+ 
+    <mat-form-field>
+       <mat-label>Acréscimo</mat-label>
+       <span matPrefix>R$</span>
+       <input type="number" name="acrescimo" matInput [(ngModel)]="itemCompra.acrescimo" required>
+    </mat-form-field>
+    
+    <mat-toolbar class="form-buttons">
+       <mat-toolbar-row>
+          <button mat-raised-button type="submit" id="salvar">
+             Salvar
+          </button>
+          <button mat-raised-button type="button" (click)="voltar(f)">
+             Voltar
+          </button>
+       </mat-toolbar-row>
+    </mat-toolbar>
+ 
+ </form>

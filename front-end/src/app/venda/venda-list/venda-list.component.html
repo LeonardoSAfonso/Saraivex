@@ -1,0 +1,68 @@
+<h1>Listagem de Vendas</h1>
+
+<div class="new-item-button-container">
+    <a mat-raised-button title='Adicionar' [routerLink]="['/venda/novo']">
+        <mat-icon>add_box</mat-icon>
+    </a>
+</div>
+
+<table mat-table [dataSource]="vendas" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- numero Venda Column -->
+    <ng-container matColumnDef="num_venda">
+        <th mat-header-cell *matHeaderCellDef> Número Venda </th>
+        <td mat-cell *matCellDef="let venda"> {{venda.num_venda}} </td>
+    </ng-container>
+
+    <!-- Data Venda Column -->
+    <ng-container matColumnDef="data_venda">
+        <th mat-header-cell *matHeaderCellDef> Data Venda </th>
+        <td mat-cell *matCellDef="let venda"> {{venda.data_venda | date: "dd/MM/yyyy"}} </td>
+    </ng-container>
+
+    <!-- cliente Column -->
+    <ng-container matColumnDef="cliente">
+        <th mat-header-cell *matHeaderCellDef> Cliente </th>
+            <td mat-cell *matCellDef="let venda"> {{venda.cliente?.nome}} </td>
+            <td mat-cell *matCellDef="let venda"> {{venda.cliente?.cpf | mask: "000.000.000-00"}} </td>
+    </ng-container>
+
+    <!-- Forma pagamento Column -->
+    <ng-container matColumnDef="forma_pagamento">
+        <th mat-header-cell *matHeaderCellDef> Forma de Pagamento </th>
+        <td mat-cell *matCellDef="let venda"> {{venda.forma_pagamento}} </td>
+    </ng-container>
+
+    <!-- Data pagamento Column -->
+    <ng-container matColumnDef="data_pagamento">
+        <th mat-header-cell *matHeaderCellDef> Data pagamento </th>
+        <td mat-cell *matCellDef="let venda"> {{venda.data_pagamento | date: "dd/MM/yyyy"}} </td>
+    </ng-container>
+
+    <!-- Editar Column -->
+    <ng-container matColumnDef="editar">
+        <th mat-header-cell *matHeaderCellDef> Editar </th>
+        <td mat-cell *matCellDef="let venda">
+            <a mat-raised-button title="Editar" [routerLink]="['/venda', venda._id]">
+                <mat-icon>edit</mat-icon>
+            </a>
+        </td>
+    </ng-container>
+
+    <!-- Excluir Column -->
+    <ng-container matColumnDef="excluir">
+        <th mat-header-cell *matHeaderCellDef> Excluir </th>
+        <td mat-cell *matCellDef="let venda">
+            <button mat-raised-button color="warn" (click)="excluirItem(venda._id)">
+                <mat-icon>delete_forever</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

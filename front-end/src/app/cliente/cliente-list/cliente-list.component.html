@@ -1,0 +1,76 @@
+<h1>Listagem de Cliente</h1> 
+
+<div class= "new-item-button-container"> 
+    <a mat-raised-button 
+    matTooltip="Adicionar Cliente"
+    [routerLink]="['/cliente/novo']">
+        <mat-icon>add_box</mat-icon>
+    </a>
+</div>
+
+<table mat-table [dataSource]="clientes" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Nome Column -->
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef> Nome </th>
+      <td mat-cell *matCellDef="let cliente"> {{cliente.nome}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="cpf">
+      <th mat-header-cell *matHeaderCellDef> CPF </th>
+      <td mat-cell *matCellDef="let cliente"> {{cliente.cpf | mask: "000.000.000-00"}} </td>
+    </ng-container>
+
+    <!-- Data Nascimento Column -->
+    <ng-container matColumnDef="data_nascimento">
+        <th mat-header-cell *matHeaderCellDef> Data Nascimento </th>
+        <td mat-cell *matCellDef="let cliente"> {{cliente.data_nascimento | date: "dd/MM/yyyy"}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> E-mail </th>
+        <td mat-cell *matCellDef="let cliente"> {{cliente.email}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="telefone">
+        <th mat-header-cell *matHeaderCellDef> Telefone </th>
+        <td mat-cell *matCellDef="let cliente"> {{cliente.telefone}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="endereco">
+        <th mat-header-cell *matHeaderCellDef> Endereço </th>
+        <td mat-cell *matCellDef="let cliente"> {{cliente.endereco}} </td>
+    </ng-container>
+
+    <!-- Editar Column -->
+    <ng-container matColumnDef="editar">
+      <th mat-header-cell *matHeaderCellDef> Editar </th>
+      <td mat-cell *matCellDef="let cliente">
+          <a mat-raised-button matTooltip="Editar Cliente" [routerLink]= "['/cliente', cliente._id]">
+          <mat-icon>edit</mat-icon>
+          </a>  
+      </td>
+    </ng-container>
+
+    <!-- Excluir Column -->
+    <ng-container matColumnDef="excluir">
+        <th mat-header-cell *matHeaderCellDef> Excluir </th>
+        <td mat-cell *matCellDef="let cliente">
+            <button mat-raised-button color="warn" matTooltip="Excluir Cliente"
+            (click)= "excluirItem(cliente._id)">
+            <mat-icon>delete_forever</mat-icon>
+            </button>
+        </td>
+      </ng-container>
+  
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

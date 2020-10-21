@@ -1,0 +1,71 @@
+<h1>Listagem de Compras</h1>
+
+<div class="new-item-button-container">
+    <a mat-raised-button 
+    matTooltip="Adicionar Compra"
+    [routerLink]="['/compra/novo']">
+        <mat-icon>add_box</mat-icon>
+    </a>
+</div>
+
+<table mat-table [dataSource]="compras" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- numero Compra Column -->
+    <ng-container matColumnDef="num_compra">
+        <th mat-header-cell *matHeaderCellDef> Número Compra </th>
+        <td mat-cell *matCellDef="let compra"> {{compra.num_compra}} </td>
+    </ng-container>
+
+    <!-- Data Compra Column -->
+    <ng-container matColumnDef="data_compra">
+        <th mat-header-cell *matHeaderCellDef> Data Compra </th>
+        <td mat-cell *matCellDef="let compra"> {{compra.data_compra | date: "dd/MM/yyyy"}} </td>
+    </ng-container>
+
+    <!-- Livreiro Column -->
+    <ng-container matColumnDef="livreiro">
+        <th mat-header-cell *matHeaderCellDef> Livreiro </th>
+        <td mat-cell *matCellDef="let compra"> {{compra.livreiro?.nome}} </td>
+        <td mat-cell *matCellDef="let compra"> {{compra.livreiro?.cpf | mask: "000.000.000-00"}} </td>
+    </ng-container>
+
+    <!-- Forma pagamento Column -->
+    <ng-container matColumnDef="forma_pagamento">
+        <th mat-header-cell *matHeaderCellDef> Forma de Pagamento </th>
+        <td mat-cell *matCellDef="let compra"> {{compra.forma_pagamento}} </td>
+    </ng-container>
+
+    <!-- Data pagamento Column -->
+    <ng-container matColumnDef="data_pagamento">
+        <th mat-header-cell *matHeaderCellDef> Data pagamento </th>
+        <td mat-cell *matCellDef="let compra"> {{compra.data_pagamento | date: "dd/MM/yyyy"}} </td>
+    </ng-container>
+
+    <!-- Editar Column -->
+    <ng-container matColumnDef="editar">
+        <th mat-header-cell *matHeaderCellDef> Editar </th>
+        <td mat-cell *matCellDef="let compra">
+            <a mat-raised-button matTooltip="Editar Compra" [routerLink]="['/compra', compra._id]">
+                <mat-icon>edit</mat-icon>
+            </a>
+        </td>
+    </ng-container>
+
+    <!-- Excluir Column -->
+    <ng-container matColumnDef="excluir">
+        <th mat-header-cell *matHeaderCellDef> Excluir </th>
+        <td mat-cell *matCellDef="let compra">
+            <button mat-raised-button color="warn" matTooltip="Excluir Compra"
+            (click)="excluirItem(compra._id)">
+                <mat-icon>delete_forever</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

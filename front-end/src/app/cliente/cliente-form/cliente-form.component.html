@@ -1,0 +1,52 @@
+<h1>{{title}}</h1>
+
+<form class= 'std-form' #f='ngForm' (ngSubmit)="salvar(f)">
+
+    <mat-form-field>
+        <mat-label>Nome</mat-label>
+        <input matInput [(ngModel)]="cliente.nome" name='nome' required placeholder="Informe o nome do(a) cliente">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>CPF</mat-label>
+        <input matInput [(ngModel)]="cliente.cpf" name='cpf' required placeholder="Informe o CPF do(a) cliente" mask="000.000.000-00">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Data de Nascimento</mat-label>
+        <input name='data_nascimento' matInput [(ngModel)]="cliente.data_nascimento" [matDatepicker]="data_nascimento">
+        <mat-datepicker-toggle matSuffix [for]="data_nascimento"></mat-datepicker-toggle>
+        <mat-datepicker #data_nascimento></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Endereço</mat-label>
+        <textarea matInput [(ngModel)]="cliente.endereco" name='endereco' placeholder="Informe o endereço do(a) cliente">
+        </textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Telefone</mat-label>
+        <mat-icon matSuffix>contact_phone</mat-icon>
+        <input matInput [(ngModel)]="cliente.telefone" name="telefone" 
+        required placeholder="Informe o telefone do(a) cliente">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>E-mail</mat-label>
+        <mat-icon matSuffix>contact_mail</mat-icon>
+        <input type="email" matInput [(ngModel)]="cliente.email" name='email' required placeholder="Informe o email do(a) cliente">
+    </mat-form-field>
+
+    <mat-toolbar class="form-buttons">
+        <mat-toolbar-row>
+           <button mat-raised-button type="submit" id="salvar">
+              Salvar
+           </button>
+           <button mat-raised-button type="button" (click)="voltar(f)">
+              Voltar
+           </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+</form>

@@ -1,0 +1,45 @@
+<p>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon aria-label="Menu Principal" id ="menu">
+            menu
+        </mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+
+        <a [routerLink]="['/livro']" mat-menu-item>
+            <mat-icon>book</mat-icon>
+            Livro
+        </a>
+
+        <a [routerLink]="['/cliente']" mat-menu-item>
+            <mat-icon>sentiment_very_satisfied</mat-icon>
+            Cliente
+        </a>
+
+        <a [routerLink]="['/venda']" mat-menu-item>
+            <mat-icon>shopping_bag</mat-icon>
+            Venda
+        </a>
+
+        <a [routerLink]="['/autor']" mat-menu-item>
+            <mat-icon>person_add</mat-icon>
+            Autor
+        </a>
+
+        <a [routerLink]="['/editora']" mat-menu-item>
+            <mat-icon>collections_bookmark</mat-icon>
+            Editora
+        </a>
+
+        <a [routerLink]="['/livreiro']" mat-menu-item>
+            <mat-icon>person_outline</mat-icon>
+            Livreiro
+        </a>
+
+        <a [routerLink]="['/compra']" mat-menu-item>
+            <mat-icon>receipt</mat-icon>
+            Compra
+        </a>
+
+    </mat-menu>
+</p>

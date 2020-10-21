@@ -1,0 +1,103 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+#menu{
+    height: 10px;
+}
+
+#container{
+    padding: 20px 38px;
+    margin-bottom: 45px;
+
+}
+
+.mat-table{
+    width: 100%;
+}
+
+.mat-row{
+
+    button {
+        min-width: 0px !important;
+        background: none !important;
+        padding: 0px !important;
+        box-shadow: none !important;
+    }
+      
+    button:hover {
+        color: #d80053;
+    }
+
+    &:hover {
+
+        filter: brightness(110%);        
+    }
+
+    a {
+        min-width: 0px !important;
+        background: none !important;
+        padding: 0px !important;
+        box-shadow: none !important;
+    }
+      
+    a:hover {
+        color:  #69f0ae;
+    }
+}
+
+.new-item-button-container{
+
+    margin-bottom: 20px;
+    text-align: right;
+
+    .mat-raised-button{
+        font-size: 150%;
+        background: none !important;
+        box-shadow: none !important;
+    }
+
+    .mat-raised-button:hover{
+        color: #69f0ae;
+    }
+}
+
+.std-form{
+    max-width: 80%;
+    margin: 0 auto;
+
+    mat-form-field{
+        min-width: 150px;
+        max-width: 400px;
+        width: 100%;
+        margin-right: 30px;
+    }
+}
+
+.mat-form-field-prefix {
+    margin-right: 10px;
+}
+
+.form-buttons {
+   
+    background: transparent;
+    
+    mat-toolbar-row {
+       display: flex;
+       justify-content: space-around;
+    }
+    
+}
+
+#salvar{
+
+    &:hover {
+        color:#424242;
+        background-color:  #69f0ae;
+    }
+}
+
+
+/* Importando icones do Angular Materials */ 
+@import "~material-design-icons/iconfont/material-icons.css";

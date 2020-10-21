@@ -1,0 +1,30 @@
+<h1>{{title}}</h1>
+
+<form class= 'std-form' #f='ngForm' (ngSubmit)="salvar(f)">
+
+    <mat-form-field>
+        <mat-label>Nome</mat-label>
+        <input matInput [(ngModel)]="autor.nome" name='nome' required placeholder="Informe o nome do(a) autor(a)">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Nacionalidade</mat-label>
+        <input matInput [(ngModel)]="autor.nacionalidade" name='nacionalidade' required placeholder="Informe a nacionalidade do(a) autor(a)">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Biografia</mat-label>
+        <textarea matInput [(ngModel)]="autor.biografia" name='biografia' placeholder="Informe uma pequena introdução ao(a) autor(a)"></textarea>
+    </mat-form-field>
+
+    <mat-toolbar class="form-buttons">
+        <mat-toolbar-row>
+           <button mat-raised-button type="submit" id="salvar">
+              Salvar
+           </button>
+           <button mat-raised-button type="button" (click)="voltar(f)">
+              Voltar
+           </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+</form>

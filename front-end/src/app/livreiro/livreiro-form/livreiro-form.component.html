@@ -1,0 +1,45 @@
+<h1>{{title}}</h1>
+
+<form class= 'std-form' #f='ngForm' (ngSubmit)="salvar(f)">
+
+    <mat-form-field>
+        <mat-label>Nome</mat-label>
+        <input matInput [(ngModel)]="livreiro.nome" name='nome' required placeholder="Informe o nome do livreiro">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>CPF</mat-label>
+        <input matInput [(ngModel)]="livreiro.cpf" name='cpf' required placeholder="Informe o CPF do livreiro" mask="000.000.000-00">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Endereço</mat-label>
+        <textarea matInput [(ngModel)]="livreiro.endereco" name='endereco' placeholder="Informe o endereço do livreiro">
+        </textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Telefone</mat-label>
+        <mat-icon matSuffix>contact_phone</mat-icon>
+        <input matInput [(ngModel)]="livreiro.telefone" name="telefone" 
+        required placeholder="Informe o telefone do livreiro">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>E-mail</mat-label>
+        <mat-icon matSuffix>contact_mail</mat-icon>
+        <input type="email" matInput [(ngModel)]="livreiro.email" name='email' required placeholder="Informe o email do livreiro">
+    </mat-form-field>
+
+    <mat-toolbar class="form-buttons">
+        <mat-toolbar-row>
+           <button mat-raised-button type="submit" id="salvar">
+              Salvar
+           </button>
+           <button mat-raised-button type="button" (click)="voltar(f)">
+              Voltar
+           </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+</form>

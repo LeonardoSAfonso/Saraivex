@@ -1,0 +1,47 @@
+<h1>{{title}}</h1>
+
+<form class= 'std-form' #f='ngForm'  (ngSubmit)="salvar(f)">
+
+    <mat-form-field>
+        <mat-label>Nome fantasia</mat-label>
+        <input matInput [(ngModel)]="editora.nome_fantasia" name='nome_fantasia' required placeholder="Informe o nome da editora.">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>CNPJ</mat-label>
+        <input matInput [(ngModel)]="editora.cnpj" name='cnpj' 
+        required placeholder="Informe o cnpj da editora."
+        mask ="00.000.000/0000-00">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Endereço</mat-label>
+        <textarea matInput [(ngModel)]="editora.endereco" name='endereco' placeholder="Informe o endereço da editora">
+        </textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Telefone</mat-label>
+        <mat-icon matSuffix>contact_phone</mat-icon>
+        <input matInput [(ngModel)]="editora.telefone" name="telefone" 
+        required placeholder="Informe o telefone da editora">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>E-mail</mat-label>
+        <mat-icon matSuffix>contact_mail</mat-icon>
+        <input type="email" matInput [(ngModel)]="editora.email" name='email' required placeholder="Informe o e-mail da editora">
+    </mat-form-field>
+
+    <mat-toolbar class="form-buttons">
+        <mat-toolbar-row>
+           <button mat-raised-button type="submit" id="salvar">
+              Salvar
+           </button>
+           <button mat-raised-button type="button" (click)="voltar(f)">
+              Voltar
+           </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+</form>

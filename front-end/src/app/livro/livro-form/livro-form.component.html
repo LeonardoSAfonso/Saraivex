@@ -1,0 +1,95 @@
+<h1>{{title}}</h1>
+
+<form class= 'std-form' #f='ngForm'(ngSubmit)="salvar(f)">
+
+    <mat-form-field>
+        <mat-label>ISBN</mat-label>
+        <input matInput [(ngModel)]="livro.isbn" name='isbn' 
+        required placeholder="Informe o ISBN do livro"
+        mask = '000-00-000-0000-0'>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Titulo</mat-label>
+        <input matInput [(ngModel)]="livro.titulo" name='titulo' required placeholder="Informe o titulo do livro">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Subtitulo</mat-label>
+        <input matInput [(ngModel)]="livro.subtitulo" name='subtitulo'  placeholder="Informe o subtitulo do livro">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select placeholder="Selecione o autor" required [(ngModel)]="livro.autor" name="autor">
+           <mat-option *ngFor="let autor of autores" [value]="autor._id">
+              {{ autor.nome }}
+           </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="Selecione a editora" required [(ngModel)]="livro.editora" name="editora">
+           <mat-option *ngFor="let editora of editoras" [value]="editora._id">
+              {{ editora.nome_fantasia }}
+           </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Edição</mat-label>
+        <input matInput [(ngModel)]="livro.edicao" name='edicao' required placeholder="Informe a edição do livro">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Data de Lançamento</mat-label>
+        <input name='data_lancamento' matInput [(ngModel)]="livro.data_lancamento" required [matDatepicker]="data_lancamento">
+        <mat-datepicker-toggle matSuffix [for]="data_lancamento"></mat-datepicker-toggle>
+        <mat-datepicker #data_lancamento></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Sinopse</mat-label>
+        <textarea matInput [(ngModel)]="livro.sinopse" name='sinopse' placeholder="Informe uma pequena sinopse do livro"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Gênero</mat-label>
+        <input matInput [(ngModel)]="livro.genero" name='genero' required placeholder="Informe o gênero do livro">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Quantidade de Páginas</mat-label>
+        <input matInput type= "number" [(ngModel)]="livro.qtd_paginas" name='qtd_paginas' required placeholder="Informe a quantidade de paginas do livro">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Preço de Venda</mat-label>
+        <span matPrefix>R$</span>
+        <input matInput type= "number" [(ngModel)]="livro.preco_venda" name='preco_venda' required placeholder="Informe o preço de venda do livro">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Preço de Compra</mat-label>
+        <span matPrefix>R$</span>
+        <input matInput type= "number" [(ngModel)]="livro.preco_compra" name='preco_compra' required placeholder="Informe o preço de compra do livro">
+    </mat-form-field>
+
+
+
+    <mat-form-field>
+        <mat-label>Quantidade em Estoque</mat-label>
+        <input matInput type= "number" [(ngModel)]="livro.quantidade" name='quantidade' required placeholder="Informe a quantidade de livros em estoque">
+    </mat-form-field>
+
+    <mat-toolbar class="form-buttons">
+        <mat-toolbar-row>
+           <button mat-raised-button type="submit" id="salvar">
+              Salvar
+           </button>
+           <button mat-raised-button type="button" (click)="voltar(f)">
+              Voltar
+           </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+</form>

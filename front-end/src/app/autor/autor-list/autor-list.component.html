@@ -1,0 +1,58 @@
+<h1>Listagem de Autores</h1> 
+
+<div class= "new-item-button-container"> 
+    <a mat-raised-button
+    matTooltip="Adicionar Autor"
+    [routerLink]="['/autor/novo']">
+        <mat-icon>add_box</mat-icon>
+    </a>
+</div>
+
+<table mat-table [dataSource]="autores" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Nome Column -->
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef> Nome </th>
+      <td mat-cell *matCellDef="let autor"> {{autor.nome}} </td>
+    </ng-container>
+  
+    <!-- Nacionalidade Column -->
+    <ng-container matColumnDef="nacionalidade">
+      <th mat-header-cell *matHeaderCellDef> Nacionalidade </th>
+      <td mat-cell *matCellDef="let autor"> {{autor.nacionalidade}} </td>
+    </ng-container>
+
+    <!-- Biografia Column -->
+    <ng-container matColumnDef="biografia">
+      <th mat-header-cell *matHeaderCellDef> Biografia </th>
+      <td mat-cell *matCellDef="let autor"> {{autor.biografia}} </td>
+    </ng-container> 
+
+    <!-- Editar Column -->
+    <ng-container matColumnDef="editar">
+      <th mat-header-cell *matHeaderCellDef> Editar </th>
+      <td mat-cell *matCellDef="let autor">
+          <a mat-raised-button matTooltip="Editar Autor" [routerLink]= "['/autor', autor._id]">
+          <mat-icon>edit</mat-icon>
+          </a>  
+      </td>
+    </ng-container>
+
+    <!-- Excluir Column -->
+    <ng-container matColumnDef="excluir">
+        <th mat-header-cell *matHeaderCellDef> Excluir </th>
+        <td mat-cell *matCellDef="let autor">
+            <button mat-raised-button color="warn" matTooltip="Excluir Autor"
+            (click)= "excluirItem(autor._id)">
+            <mat-icon>delete_forever</mat-icon>
+            </button>
+        </td>
+      </ng-container>
+  
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
